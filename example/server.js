@@ -50,6 +50,12 @@ router.post('/base/buffer', (req,res)=>{
   })
 })
 
+router.post('/error/post', (req,res)=>{
+  setTimeout(() => {
+    res.json(req.body)
+  }, 2000);
+})
+
 app.use(router)
 
 const port = process.env.PORT || 8080

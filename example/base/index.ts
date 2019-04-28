@@ -73,7 +73,23 @@ axios({
     a:1,
     b:2
   }
+}).then(res=>{
+  console.log(res)
 })
+.catch()
+axios({
+  method: 'post',
+  url: '/base/post',
+  responseType:'json',
+  data: {
+    a:1,
+    b:2
+  }
+}).then(res=>{
+  console.log(res)
+})
+.catch()
+
 axios({
   method: 'post',
   url: '/base/post',
