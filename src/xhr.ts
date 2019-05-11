@@ -1,5 +1,5 @@
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from './types'
-import { createError } from './helpers/error'
+// import { createError } from './helpers/error'
 
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
@@ -38,10 +38,12 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       responseStatus(response)
     }
     request.onerror = () => {
-      reject(createError('Notwork Error', config, null, request))
+      reject(new Error('Notwork Error'))
+      // reject(createError('Notwork Error', config, null, request))
     }
     request.ontimeout = () => {
-      reject(createError(`Timeout of ${timeout} ms exceeded`, config, 'ECONNABORTED', request))
+      reject(new Error(`Timeout of ${timeout} ms exceeded`))
+      // reject(createError(`Timeout of ${timeout} ms exceeded`, config, 'ECONNABORTED', request))
     }
 
     function responseStatus(response: AxiosResponse): void {
@@ -50,7 +52,8 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
         resolve(response)
       } else {
         reject(
-          createError(`Request failed with status code ${status}`, config, null, request, response)
+          new Error(`Request failed with status code ${status}`)
+          // createError(`Request failed with status code ${status}`, config, null, request, response)
         )
       }
     }

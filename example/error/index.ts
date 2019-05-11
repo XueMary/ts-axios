@@ -46,8 +46,6 @@ axios({
 })
 .catch(err=>{
   console.log(err.message)
-  console.log(err.config)
-  console.log(err.code)
 })
 
 setTimeout(() => {
