@@ -56,6 +56,10 @@ router.post('/error/post', (req,res)=>{
   }, 2000);
 })
 
+router.post('/instans/post', (req,res)=>{
+  res.json(req.body)
+})
+
 app.use(router)
 
 const port = process.env.PORT || 8080
